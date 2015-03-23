@@ -1,14 +1,9 @@
-PATH
-  remote: .
-  specs:
-    json_rpc_to_rest (0.1.0)
-      rack (>= 0.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
     rack (1.6.0)
+    rake (10.4.2)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -27,5 +22,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json_rpc_to_rest!
-  rspec
+  rack (>= 0.4)
+  rake
+  rspec (>= 3)

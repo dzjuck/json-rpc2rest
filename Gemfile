@@ -1,2 +1,8 @@
 source 'https://rubygems.org'
-gemspec
+
+gem 'rack', '>= 0.4'
+gem 'rake'
+
+group :test do
+  gem 'rspec',  '>= 3' 
+end

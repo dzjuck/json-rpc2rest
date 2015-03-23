@@ -12,12 +12,9 @@ Gem::Specification.new do |s|
   s.email             = "dzjuck@gmail.com"
   s.homepage          = "http://github.com/dzjuck/json_rpc_to_rest"
   s.files             = ["lib/json_rpc_to_rest.rb"]
-  # s.test_files        = ["test/config_test.rb"]
+  s.test_files        = ["spec/json_rpc_to_rest.rb"]
 
   s.require_paths     = %w[lib]
   s.rubygems_version  = '1.1.1'
   s.license           = 'MIT'
-
-  s.add_dependency 'rack', '>= 0.4'
-  s.add_development_dependency 'rspec'
 end
