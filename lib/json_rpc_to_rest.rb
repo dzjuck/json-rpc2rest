@@ -17,10 +17,11 @@ private
   def init_call(env)
     @env = env
     @path = nil
+    @params = @env['rack.request.form_hash']
   end
 
   def json_rpc_present?
-    @env['rack.request.form_hash'] && @env['rack.request.form_hash'][@field]
+    @params && @params[@field]
   end
 
   def path
@@ -28,7 +29,7 @@ private
   end
 
   def new_path
-    path << '/' + @env['rack.request.form_hash'][@field]
+    path << '/' + @params[@field]
   end
 
   def change_path(path)
