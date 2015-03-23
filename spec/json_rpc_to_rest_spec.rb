@@ -64,9 +64,9 @@ describe JsonRpcToRest do
       it_should_behave_like "don't change env"
     end
 
-    context 'when method name changed' do
+    context 'when method field changed' do
       let(:params) { {'requestMethod'=>'get_posts_list', 'data' => [], 'id'=>'2'} }
-      let(:obj) { described_class.new(app, {method: 'requestMethod'}) }
+      let(:obj) { described_class.new(app, {field: 'requestMethod'}) }
       it_should_behave_like 'change env'
     end
   end

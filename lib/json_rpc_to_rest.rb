@@ -1,7 +1,7 @@
 class JsonRpcToRest
   def initialize(app, options={})
     @app = app
-    @method = options[:method] || 'method'
+    @field = options[:field] || 'method'
   end
   
   def call(env)
@@ -20,7 +20,7 @@ private
   end
 
   def json_rpc_present?
-    @env['rack.request.form_hash'] && @env['rack.request.form_hash'][@method]
+    @env['rack.request.form_hash'] && @env['rack.request.form_hash'][@field]
   end
 
   def path
@@ -28,7 +28,7 @@ private
   end
 
   def new_path
-    path << '/' + @env['rack.request.form_hash'][@method]
+    path << '/' + @env['rack.request.form_hash'][@field]
   end
 
   def change_path(path)
