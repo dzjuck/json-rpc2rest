@@ -5,7 +5,7 @@ Middleware to make inner redirect for [Json-Rpc](http://en.wikipedia.org/wiki/JS
 ## Installation
 
 ```shell
-gem install functional-ruby
+gem install json_rpc_to_rest
 ```
 
 or add the following line to Gemfile:
