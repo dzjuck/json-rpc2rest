@@ -2,6 +2,8 @@
 
 Middleware to make inner redirect for [Json-Rpc](http://en.wikipedia.org/wiki/JSON-RPC) requests.
 
+[![Gem Version](https://badge.fury.io/rb/json_rpc_to_rest.png)](http://badge.fury.io/rb/json_rpc_to_rest)
+
 ## Installation
 
 ```shell
