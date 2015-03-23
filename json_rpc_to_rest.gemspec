@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   s.rubygems_version  = '1.1.1'
   s.license           = 'MIT'
 
-  s.add_dependency 'rack', '~> 0.4'
+  s.add_dependency 'rack', '>= 0.4'
+  s.add_development_dependency 'rspec'
 end
