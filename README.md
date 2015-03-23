@@ -39,7 +39,7 @@ config.middleware.use 'JsonRpcToRest'
 
 Post request for `/api` with params
 ```json
-{"requestMethod" => "get_posts_list", "data" => [], "id" => 2}
+{"requestMethod": "get_posts_list", "data": [], "id": 2}
 ```
 will be processed as `/api/get_posts_list`.
 
