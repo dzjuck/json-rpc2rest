@@ -1,4 +1,6 @@
-class JsonRpcToRest
+require 'json'
+
+class JsonRpc2Rest
   def initialize(app, options={})
     @app = app
     @field = options[:field] || 'method'
@@ -17,7 +19,14 @@ private
   def init_call(env)
     @env = env
     @path = nil
-    @params = @env['rack.request.form_hash']
+
+    req_body = Rack::Request.new(env).body.read
+    if env['REQUEST_METHOD'] == 'POST' && req_body.present?
+      # @params = @env['rack.request.form_hash']
+      @params = JSON.parse(req_body)
+    else
+      @params ||= {}
+    end
   end
 
   def json_rpc_present?

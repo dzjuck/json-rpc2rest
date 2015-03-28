@@ -2,19 +2,19 @@
 
 Middleware to make inner redirect for [Json-Rpc](http://en.wikipedia.org/wiki/JSON-RPC) requests.
 
-[![Gem Version](https://badge.fury.io/rb/json_rpc_to_rest.png)](http://badge.fury.io/rb/json_rpc_to_rest)
-[![Build Status](https://travis-ci.org/dzjuck/json_rpc_to_rest.svg?branch=master)](https://travis-ci.org/dzjuck/json_rpc_to_rest)
+[![Gem Version](https://badge.fury.io/rb/json-rpc2rest.png)](http://badge.fury.io/rb/json-rpc2rest)
+[![Build Status](https://travis-ci.org/dzjuck/json-rpc2rest.svg?branch=master)](https://travis-ci.org/dzjuck/json-rpc2rest)
 
 ## Installation
 
 ```shell
-gem install json_rpc_to_rest
+gem install json-rpc2rest
 ```
 
 or add the following line to Gemfile:
 
 ```ruby
-gem 'json_rpc_to_rest'
+gem 'json-rpc2rest'
 ```
 
 and run `bundle install` from your shell.
@@ -22,13 +22,13 @@ and run `bundle install` from your shell.
 After that add line to `config/application.rb`
 
 ```ruby
-config.middleware.use 'JsonRpcToRest'
+config.middleware.use 'Json-Rpc2Rest'
 ```
 
 Also you can specify field with method name
 
 ```ruby
-config.middleware.use 'JsonRpcToRest', field: 'requestMethod'
+config.middleware.use 'Json-Rpc2Rest', field: 'requestMethod'
 ```
 
 Default field is `"method"` as in [specification](http://www.jsonrpc.org/specification#request_object).
@@ -44,13 +44,13 @@ Post request for `/api` with params
 ```json
 {"method": "get_posts_list", "data": [], "id": 2}
 ```
-will be processed as `/api/get_posts_list`.
+will be processed as `/api/get_posts_list` with same params.
 
 ## Tests
 
 ```bash
-git clone https://github.com/dzjuck/json_rpc_to_rest.git
-cd json_rpc_to_rest
+git clone https://github.com/dzjuck/json-rpc2rest.git
+cd json-rpc2rest
 bundle install
 rspec
 ```

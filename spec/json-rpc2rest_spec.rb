@@ -1,5 +1,5 @@
 require 'rspec'
-require 'json_rpc_to_rest'
+require 'json-rpc2rest'
 
 shared_examples_for 'change env' do 
   it 'should change PATH_INFO and REQUEST_URI' do
@@ -15,7 +15,7 @@ shared_examples_for "don't change env" do
   end
 end
 
-describe JsonRpcToRest do
+describe JsonRpc2Rest do
   let(:obj) { described_class.new(app) }
   let(:app) { double('app') }
 
