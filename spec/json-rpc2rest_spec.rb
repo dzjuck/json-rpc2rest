@@ -21,8 +21,8 @@ describe JsonRpc2Rest do
   let(:app) { double('app') }
   let(:params) { '' }
   before(:each) do
-    rack_req = Rack::Request.any_instance
-    rack_req.stub_chain(:body, :read).and_return(params)
+    allow_any_instance_of(Rack::Request).
+      to receive_message_chain(:body, :read).and_return(params)
   end
 
   it 'takes a backend and returns a middleware component' do
