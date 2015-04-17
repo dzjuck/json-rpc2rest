@@ -21,7 +21,7 @@ private
     @path = nil
 
     req_body = Rack::Request.new(env).body.read
-    if env['REQUEST_METHOD'] == 'POST' && req_body.present?
+    if env['REQUEST_METHOD'] == 'POST' && !req_body.nil? && !req_body.empty?
       # @params = @env['rack.request.form_hash']
       @params = JSON.parse(req_body)
     else

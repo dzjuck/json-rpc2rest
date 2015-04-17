@@ -1,4 +1,5 @@
 require 'rspec'
+require 'rack'
 require 'json-rpc2rest'
 
 shared_examples_for 'change env' do 
@@ -18,6 +19,11 @@ end
 describe JsonRpc2Rest do
   let(:obj) { described_class.new(app) }
   let(:app) { double('app') }
+  let(:params) { '' }
+  before(:each) do
+    rack_req = Rack::Request.any_instance
+    rack_req.stub_chain(:body, :read).and_return(params)
+  end
 
   it 'takes a backend and returns a middleware component' do
     expect(obj).to respond_to(:call)
@@ -29,10 +35,10 @@ describe JsonRpc2Rest do
   end
 
   context 'when json-rpc params' do
-    let(:params) { {'method'=>'get_posts_list', 'data' => [], 'id'=>'2'} }
+    let(:params) { {'method'=>'get_posts_list', 'data' => [], 'id'=>'2'}.to_json }
     let(:env) {
       {'REQUEST_METHOD' => 'POST', 
-       'rack.request.form_hash' => params,
+       # 'rack.request.form_hash' => params,
        'PATH_INFO' => '/api',
        'REQUEST_URI'  => '/api?page=2'
       }
@@ -49,7 +55,7 @@ describe JsonRpc2Rest do
     context 'when PATH_INFO with trailing slash' do
       let(:env) {
         {'REQUEST_METHOD' => 'POST', 
-         'rack.request.form_hash' => params,
+         # 'rack.request.form_hash' => params,
          'PATH_INFO' => '/api/',
          'REQUEST_URI'  => '/api/?page=2'
         }
@@ -59,13 +65,13 @@ describe JsonRpc2Rest do
     end
 
     context 'when method is not defined in params' do
-      let(:params) { {'data' => [], 'id'=>'2'} }
+      let(:params) { {'data' => [], 'id'=>'2'}.to_json }
 
       it_should_behave_like "don't change env"
     end
 
     context 'when method field changed' do
-      let(:params) { {'requestMethod'=>'get_posts_list', 'data' => [], 'id'=>'2'} }
+      let(:params) { {'requestMethod'=>'get_posts_list', 'data' => [], 'id'=>'2'}.to_json }
       let(:obj) { described_class.new(app, {field: 'requestMethod'}) }
       it_should_behave_like 'change env'
     end

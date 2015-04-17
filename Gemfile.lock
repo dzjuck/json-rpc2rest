@@ -24,4 +24,4 @@ PLATFORMS
 DEPENDENCIES
   rack (>= 0.4)
   rake
-  rspec (>= 3)
+  rspec (~> 3.2)
