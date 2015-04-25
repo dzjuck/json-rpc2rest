@@ -11,8 +11,7 @@ Gem::Specification.new do |s|
   s.authors           = ["Ilya Lavrov"]
   s.email             = "dzjuck@gmail.com"
   s.homepage          = "http://github.com/dzjuck/json-rpc2rest"
-  s.files             = ["lib/json-rpc2rest.rb"]
-  s.test_files        = ["spec/json-rpc2rest_spec.rb"]
+  s.files             = `git ls-files`.split("\n")
 
   s.require_paths     = %w[lib]
   s.rubygems_version  = '1.1.1'
