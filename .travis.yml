@@ -4,4 +4,13 @@ rvm:
   - 2.1
   - 2.0
   - 1.9
+  - jruby
+  - rbx
+  - ruby-head
   - jruby-head
+  - rbx-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
+    - rvm: rbx-head
