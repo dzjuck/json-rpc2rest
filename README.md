@@ -40,7 +40,7 @@ Default field is `"method"` as in [specification](http://www.jsonrpc.org/specifi
 config.middleware.use 'JsonRpcToRest'
 ```
 
-Post request for `/api` with params
+Post request to `/api` with params
 ```json
 {"method": "get_posts_list", "data": [], "id": 2}
 ```
