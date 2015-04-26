@@ -22,9 +22,8 @@ private
     @path = nil
 
     req_body = Rack::Request.new(env).body.read
-    if env['REQUEST_METHOD'] == 'POST' && !req_body.nil? && !req_body.empty?
-      # @params = @env['rack.request.form_hash']
-      @params = JSON.parse(req_body)
+    if env['REQUEST_METHOD'] == 'POST' && req_body.is_a?(String)
+      @params = parse_req_body(req_body)
     else
       @params ||= {}
     end
@@ -47,5 +46,14 @@ private
     @env['PATH_INFO'] = path
     @env['REQUEST_URI'].sub!(original_path, path)
   end
-end
 
+  def req_body_present?(req_body)
+    !req_body.nil? && !req_body.empty?
+  end
+
+  def parse_req_body(req_body)
+    JSON.parse(req_body)
+  rescue JSON::ParserError => e
+    {}
+  end
+end

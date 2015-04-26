@@ -9,7 +9,7 @@ shared_examples_for 'change env' do
 end
 
 shared_examples_for "don't change env" do 
-  it 'should change PATH_INFO and REQUEST_URI' do
+  it 'should not change PATH_INFO and REQUEST_URI' do
     expect(app).to receive(:call).with(env)
     obj.call(env)
   end
@@ -37,7 +37,6 @@ describe JsonRpc2Rest do
     let(:params) { {'method'=>'get_posts_list', 'data' => [], 'id'=>'2'}.to_json }
     let(:env) {
       {'REQUEST_METHOD' => 'POST', 
-       # 'rack.request.form_hash' => params,
        'PATH_INFO' => '/api',
        'REQUEST_URI'  => '/api?page=2'
       }
@@ -54,7 +53,6 @@ describe JsonRpc2Rest do
     context 'when PATH_INFO with trailing slash' do
       let(:env) {
         {'REQUEST_METHOD' => 'POST', 
-         # 'rack.request.form_hash' => params,
          'PATH_INFO' => '/api/',
          'REQUEST_URI'  => '/api/?page=2'
         }
@@ -72,19 +70,40 @@ describe JsonRpc2Rest do
     context 'when method field changed' do
       let(:params) { {'requestMethod'=>'get_posts_list', 'data' => [], 'id'=>'2'}.to_json }
       let(:obj) { described_class.new(app, {field: 'requestMethod'}) }
+
       it_should_behave_like 'change env'
+    end
+
+    context "when it's not correct json" do
+      let(:params) { '{uncorrect json}' }
+
+      it_should_behave_like "don't change env"
     end
   end
 
-  context 'when get request' do
-    let(:env) {
-      {'REQUEST_METHOD' => 'GET', 
-       'PATH_INFO' => '/api',
-       'REQUEST_URI'  => '/api?page=2'
+  context 'without json-rpc params' do
+    context 'when post request with hash params' do
+      let(:params) { {'key' => 'value'} }
+      let(:env) {
+        {'REQUEST_METHOD' => 'POST', 
+         'PATH_INFO' => '/api',
+         'REQUEST_URI'  => '/api?page=2'
+        }
       }
-    }
 
-    it_should_behave_like "don't change env"
+      it_should_behave_like "don't change env"
+    end
+
+    context 'when get request' do
+      let(:env) {
+        {'REQUEST_METHOD' => 'GET', 
+         'PATH_INFO' => '/api',
+         'REQUEST_URI'  => '/api?page=2'
+        }
+      }
+
+      it_should_behave_like "don't change env"
+    end
   end
 
 end
