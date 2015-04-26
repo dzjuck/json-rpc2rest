@@ -54,6 +54,7 @@ private
   def parse_req_body(req_body)
     JSON.parse(req_body)
   rescue JSON::ParserError => e
+    {}
   rescue TypeError => e
     {}
   end
