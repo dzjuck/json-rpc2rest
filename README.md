@@ -6,6 +6,7 @@ Middleware to make inner redirect for [Json-Rpc](http://en.wikipedia.org/wiki/JS
 [![Build Status](https://travis-ci.org/dzjuck/json-rpc2rest.svg?branch=master)](https://travis-ci.org/dzjuck/json-rpc2rest)
 [![Coverage Status](https://coveralls.io/repos/dzjuck/json-rpc2rest/badge.svg)](https://coveralls.io/r/dzjuck/json-rpc2rest)
 [![Code Climate](https://codeclimate.com/github/dzjuck/json-rpc2rest/badges/gpa.svg)](https://codeclimate.com/github/dzjuck/json-rpc2rest)
+[![Dependency Status](https://gemnasium.com/dzjuck/json-rpc2rest.svg)](https://gemnasium.com/dzjuck/json-rpc2rest)
 
 ## Installation
 
