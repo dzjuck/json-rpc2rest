@@ -22,7 +22,7 @@ private
     @path = nil
 
     req_body = Rack::Request.new(env).body.read
-    if env['REQUEST_METHOD'] == 'POST' && req_body.is_a?(String)
+    if env['REQUEST_METHOD'] == 'POST'
       @params = parse_req_body(req_body)
     else
       @params ||= {}
@@ -54,6 +54,7 @@ private
   def parse_req_body(req_body)
     JSON.parse(req_body)
   rescue JSON::ParserError => e
+  rescue TypeError => e
     {}
   end
 end
