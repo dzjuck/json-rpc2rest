@@ -12,3 +12,7 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
+
+env:
+  global:
+    - "JRUBY_OPTS=-Xcext.enabled=true"

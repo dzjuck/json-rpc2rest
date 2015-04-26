@@ -4,7 +4,7 @@ Middleware to make inner redirect for [Json-Rpc](http://en.wikipedia.org/wiki/JS
 
 [![Gem Version](https://badge.fury.io/rb/json-rpc2rest.png)](http://badge.fury.io/rb/json-rpc2rest)
 [![Build Status](https://travis-ci.org/dzjuck/json-rpc2rest.svg?branch=master)](https://travis-ci.org/dzjuck/json-rpc2rest)
-[![Coverage Status](https://img.shields.io/coveralls/dzjuck/json-rpc2rest/master.svg)](https://coveralls.io/r/dzjuck/json-rpc2rest)
+[![Coverage Status](https://coveralls.io/repos/dzjuck/json-rpc2rest/badge.svg)](https://coveralls.io/r/dzjuck/json-rpc2rest)
 
 ## Installation
 
