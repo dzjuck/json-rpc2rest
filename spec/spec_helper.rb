@@ -1,5 +1,15 @@
+require 'simplecov'
 require 'coveralls'
-Coveralls.wear!
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+]
+
+SimpleCov.start do
+  project_name 'json-rpc2rest'
+  add_filter '/spec/'
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

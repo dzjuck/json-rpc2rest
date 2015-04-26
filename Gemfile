@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gem 'rack', '>= 0.4'
 gem 'rake'
 
-
 group :development, :test do
+  gem 'simplecov', require: false
   gem 'coveralls', require: false
 end
 
